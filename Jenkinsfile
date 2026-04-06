@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    tools {
-        jdk 'jdk21' // Le nom du JDK configuré dans Jenkins (Global Tool Configuration)
-        maven 'maven3' // Le nom de ton Maven configuré dans Jenkins
-    }
-
     stages {
         stage('Checkout') {
             steps {
