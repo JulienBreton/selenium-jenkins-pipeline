@@ -1,6 +1,11 @@
 pipeline {
     agent any
     
+    tools {
+        // On ne garde que Maven, car Java est déjà là
+        maven 'maven3' 
+    }
+
     stages {
         stage('Checkout') {
             steps {
