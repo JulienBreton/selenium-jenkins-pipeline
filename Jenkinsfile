@@ -22,10 +22,8 @@ pipeline {
 
     post {
         always {
-            // Cette commande va lister tous les XML et leur chemin dans la console
-            sh 'find . -name "*.xml" | grep surefire-reports'
-
-            junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
+            // On cible le dossier junitreports qui contient les fichiers au format standard
+            junit testResults: '**/target/surefire-reports/junitreports/*.xml', allowEmptyResults: true
         }
     }
 }
