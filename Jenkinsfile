@@ -20,12 +20,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // C'est ici qu'on publie les rapports TestNG dans Jenkins
-            recordTestResults '**/target/surefire-reports/testng-results.xml'
-            archiveArtifacts artifacts: '**/target/surefire-reports/**', allowEmptyArchive: true
-        }
-    }
 }
