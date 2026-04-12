@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite des tests Firefox">
+  <test name="test Firefox">
+    <classes>
+      <class name="com.example.testscripts.FirefoxTest">
+      	<methods>
+      		<include name="verifyFirefoxTitle" /> 		
+      	</methods>
+      </class>
+    </classes>
+  </test>
+</suite>

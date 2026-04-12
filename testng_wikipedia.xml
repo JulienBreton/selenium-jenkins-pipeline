@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite des tests Wikipedia">
+  <test name="test Wikipedia">
+    <classes>
+      <class name="com.example.testscripts.WikipediaTest">
+      	<methods>
+      		<include name="verifyWikipediaTitle" /> 		
+      	</methods>
+      </class>
+    </classes>
+  </test>
+</suite>
