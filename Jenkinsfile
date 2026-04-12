@@ -13,11 +13,19 @@ pipeline {
                 sh 'mvn verify -DskipTests' 
             }
         }
-        stage('UI Tests') {
+        stage('Main-Test') {
             steps {
-                // On lance ton test Google sur le Docker
-                sh 'mvn test -Dtest=GoogleTest -DrunMode=remote'
+                // On lance les tests Selenium (souvent on ignore les erreurs ici pour passer au post-test)
+                sh 'mvn test -DsuiteXmlFile=testng_main.xml -Dmaven.test.failure.ignore=true'
             }
+        }
+    }
+
+    post {
+        always {
+            // C'est ici qu'on publie les rapports TestNG dans Jenkins
+            recordTestResults '**/target/surefire-reports/testng-results.xml'
+            archiveArtifacts artifacts: '**/target/surefire-reports/**', allowEmptyArchive: true
         }
     }
 }

@@ -14,7 +14,7 @@ public class DriverFactory {
 
         // On récupère une variable d'environnement ou une propriété Maven
         // Si "REMOTE" est vrai, on va sur le Hub Docker, sinon en local
-        String runMode = System.getProperty("runMode", "local");
+        String runMode = System.getProperty("runMode", "remote");
 
         if ("remote".equalsIgnoreCase(runMode)) {
             System.out.println("🌐 Connexion au Selenium Hub Docker...");
