@@ -11,6 +11,7 @@ public class PreChecks  extends TestBase {
         // Le driver est déjà initialisé par le @BeforeMethod de TestBase
         driver.get("https://julienbreton.github.io/selenium-jenkins-pipeline/statut_ptf?status=ok");
         String statut = driver.findElement(By.id("status-message")).getText();
+        System.out.print("✅ Vérification du statut de la plateforme : " + statut);
         Assert.assertTrue(statut.contains("la plateforme est ok"));
     }
 
@@ -19,6 +20,7 @@ public class PreChecks  extends TestBase {
         // Le driver est déjà initialisé par le @BeforeMethod de TestBase
         driver.get("https://julienbreton.github.io/selenium-jenkins-pipeline/statut_ptf?status=ko");
         String statut = driver.findElement(By.id("status-message")).getText();
+        System.out.print("❌ Vérification du statut de la plateforme : " + statut);        
         Assert.assertTrue(statut.contains("la plateforme est KO"));
     }
 }
