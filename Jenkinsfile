@@ -23,7 +23,7 @@ pipeline {
     post {
         always {
             // TestNG génère ces XML dans surefire-reports quand il est lancé par Maven
-            junit '**/target/surefire-reports/testng-results.xml'
+            junit 'target/surefire-reports/testng-results.xml'
         }
     }
 }
