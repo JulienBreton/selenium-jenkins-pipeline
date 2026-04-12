@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite des pre tests">
-  <test name="main test">
+  <test name="pre-checks">
     <classes>
       <class name="com.example.testscripts.PreChecks">
       	<methods>
-      		<include name="verifyStatutPtfKO" /> 		
+      		<include name="verifyStatutPtfOK" /> 		
       	</methods>
       </class>
     </classes>

@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite des post tests">
+  <test name="post-checks">
+    <classes>
+      <class name="com.example.testscripts.PostChecks">
+      	<methods>
+      		<include name="verifyStatutPtfOK" /> 		
+      	</methods>
+      </class>
+    </classes>
+  </test>
+</suite>

@@ -13,5 +13,10 @@ pipeline {
                 sh 'mvn test -P maintest'
             }
         }
+        stage('Post-Check Tests') {
+            steps {
+                sh 'mvn test -P postcheck'
+            }
+        }
     }
 }
