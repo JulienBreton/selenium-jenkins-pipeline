@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulateur de Plateforme</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; transition: background-color 0.3s; }
+        .container { text-align: center; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; }
+        #status-message { font-size: 20px; font-weight: bold; margin-bottom: 20px; }
+        button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 4px; background: #3498db; color: white; font-weight: bold; }
+        button:hover { background: #2980b9; }
+        /* Classes pour les états */
+        .is-ok { background-color: #e8f5e9; color: #2e7d32; }
+        .is-ko { background-color: #ffebee; color: #c62828; }
+    </style>
+</head>
+<body class="is-ok" id="bg">
+    <div class="container">
+        <h1>Contrôle Ptf</h1>
+        <p id="status-message">la plateforme est ok</p>
+        
+        <button id="toggle-btn" onclick="toggleStatus()">Changer le statut</button>
+    </div>
+
+    <script>
+        function toggleStatus() {
+            const msg = document.getElementById('status-message');
+            const bg = document.getElementById('bg');
+            
+            if (msg.innerText === "la plateforme est ok") {
+                msg.innerText = "la plateforme est KO";
+                bg.className = "is-ko";
+            } else {
+                msg.innerText = "la plateforme est ok";
+                bg.className = "is-ok";
+            }
+        }
+    </script>
+</body>
+</html>
