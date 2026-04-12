@@ -4,7 +4,7 @@
     <classes>
       <class name="com.example.testscripts.PostChecks">
       	<methods>
-      		<include name="verifyStatutPtfKO" /> 		
+      		<include name="verifyStatutPtfOK" /> 		
       	</methods>
       </class>
     </classes>
