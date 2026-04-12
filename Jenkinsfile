@@ -22,8 +22,10 @@ pipeline {
 
     post {
         always {
-            // TestNG génère ces XML dans surefire-reports quand il est lancé par Maven
-            junit 'target/surefire-reports/testng-results.xml'
+            // Cette commande va lister tous les XML et leur chemin dans la console
+            sh 'find . -name "*.xml" | grep surefire-reports'
+
+            junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
         }
     }
 }
