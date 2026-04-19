@@ -19,7 +19,7 @@ public class DriverFactory {
         if ("remote".equalsIgnoreCase(runMode)) {
             System.out.println("🌐 Connexion au Selenium Hub Docker...");
             return new RemoteWebDriver(
-                    URI.create("http://172.17.0.1:4444/wd/hub").toURL(),
+                    URI.create("pc-hote:4444/wd/hub").toURL(),
                     options);
         } else {
             System.out.println("💻 Lancement du Chrome local...");
