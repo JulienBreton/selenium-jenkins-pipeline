@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'selenium-vm' } // Utilise bien le label que tu as mis à l'agent
+    agent { label 'test-agent-ubound ' } // Utilise bien le label que tu as mis à l'agent
 
     stages {
         stage('POC : Préparation Platform') {
