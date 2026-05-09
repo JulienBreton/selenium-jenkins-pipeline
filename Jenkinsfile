@@ -13,23 +13,27 @@ pipeline {
                     sh 'date > autres_info.txt'
                     // Toutes les commandes ici seront dans /home/jules/autres
                 }
+                sh 'hostname'
                 echo "Plateforme simulée avec succès."
             }
         }
 
         stage('Pre-Check Platform') {
             steps {
+                sh 'hostname'
                 // Si ce test échoue (ex: statut KO), Jenkins s'arrête ici
                 sh 'mvn clean test -P precheck'
             }
         }
         stage('Main Selenium Tests') {
             steps {
+                sh 'hostname'
                 sh 'mvn test -P maintest'
             }
         }
         stage('Post-Check Tests') {
             steps {
+                sh 'hostname'
                 sh 'mvn test -P postcheck'
             }
         }
