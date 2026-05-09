@@ -19,7 +19,7 @@ pipeline {
         }*/
 
         stage('Pre-Check Platform') {
-            agent { label 'master' }
+            agent { label 'Agent-Lubuntu-Selenium' }
             steps {
                 sh 'hostname'
                 // Si ce test échoue (ex: statut KO), Jenkins s'arrête ici
@@ -27,14 +27,14 @@ pipeline {
             }
         }
         stage('Main Selenium Tests') {
-            agent { label 'master' }            
+            agent { label 'Agent-Lubuntu-Selenium' }            
             steps {
                 sh 'hostname'
                 sh 'mvn test -P maintest'
             }
         }
         stage('Post-Check Tests') {
-            agent { label 'master' }            
+            agent { label 'Agent-Lubuntu-Selenium' }            
             steps {
                 sh 'hostname'
                 sh 'mvn test -P postcheck'
