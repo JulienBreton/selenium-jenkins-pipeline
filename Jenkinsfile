@@ -1,5 +1,6 @@
 pipeline {
     //agent { label 'master' } // Utilise bien le label que tu as mis à l'agent
+    agent any
 
     stages {
         /*stage('POC : Préparation Platform') {
