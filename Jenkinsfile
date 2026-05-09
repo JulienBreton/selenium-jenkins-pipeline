@@ -7,7 +7,7 @@ pipeline {
                 echo "--- ÉTAPE 1 : Simulation Préparation ---"
                 sh 'mkdir -p ./poc-test'
                 sh 'date > ./poc-test/build_info.txt'
-                echo "Plateforme simulée avec succès."
+                echo "Plateforme simulée avec succès. 090526"
             }
         }
 
