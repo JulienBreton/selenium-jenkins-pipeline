@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'contrôleur' } // Utilise bien le label que tu as mis à l'agent
+    agent { label 'master' } // Utilise bien le label que tu as mis à l'agent
 
     stages {
         stage('POC : Préparation Platform') {
