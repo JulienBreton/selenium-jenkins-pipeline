@@ -1,8 +1,8 @@
 pipeline {
-    agent { label 'master' } // Utilise bien le label que tu as mis à l'agent
+    //agent { label 'master' } // Utilise bien le label que tu as mis à l'agent
 
     stages {
-        stage('POC : Préparation Platform') {
+        /*stage('POC : Préparation Platform') {
             agent { label 'test-agent-ubound' }
             steps {
                 echo "--- ÉTAPE 1 : Simulation Préparation ---"
@@ -14,7 +14,7 @@ pipeline {
                 }
                 echo "Plateforme simulée avec succès."
             }
-        }
+        }*/
 
         stage('Pre-Check Platform') {
             steps {
