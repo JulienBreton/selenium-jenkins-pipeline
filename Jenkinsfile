@@ -1,7 +1,8 @@
 pipeline {
-   agent any
+    agent none
 
     stages {
+
         stage('POC : Préparation Platform') {
             agent { label 'test-agent-inbound' }
             steps {
@@ -10,26 +11,28 @@ pipeline {
                 sh 'date > ./poc-test/build_info.txt'
                 dir('/home/jules/autres') {
                     sh 'date > autres_info.txt'
-                    // Toutes les commandes ici seront dans /home/jules/autres
                 }
                 sh 'hostname'
                 echo "Plateforme simulée avec succès."
+                // Pas de stash — rien à transférer
             }
         }
 
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
             steps {
-                // Si ce test échoue (ex: statut KO), Jenkins s'arrête ici
+                // Checkout automatique ici — le code est disponible directement
                 sh 'mvn clean test -P precheck'
             }
         }
+
         stage('Main Selenium Tests') {
             agent { label 'built-in' }
             steps {
                 sh 'mvn test -P maintest'
             }
         }
+
         stage('Post-Check Tests') {
             agent { label 'built-in' }
             steps {
@@ -40,8 +43,10 @@ pipeline {
 
     post {
         always {
-            // On cible le dossier junitreports qui contient les fichiers au format standard
-            junit testResults: '**/target/surefire-reports/junitreports/*.xml', allowEmptyResults: true
+            node('built-in') {
+                junit testResults: '**/target/surefire-reports/junitreports/*.xml',
+                      allowEmptyResults: true
+            }
         }
     }
 }
