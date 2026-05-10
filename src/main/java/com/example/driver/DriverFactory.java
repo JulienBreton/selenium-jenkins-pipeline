@@ -19,6 +19,7 @@ public class DriverFactory {
         if ("remote".equalsIgnoreCase(runMode)) {
             System.out.println("🌐 Connexion au Selenium Hub Docker...");
             return new RemoteWebDriver(
+                    //docker inspect mon-jenkins | grep Gateway pour avoir l'ip
                     URI.create("http://172.17.0.1:4444/wd/hub").toURL(),
                     options);
         } else {
