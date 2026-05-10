@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('POC : Préparation Platform') {
-            agent { label 'test-agent-ubound' }
+            agent { label 'test-agent-inbound' }
             steps {
                 echo "--- ÉTAPE 1 : Simulation Préparation ---"
                 sh 'mkdir -p ./poc-test'
