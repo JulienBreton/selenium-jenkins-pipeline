@@ -1,25 +1,11 @@
 pipeline {
-    //agent { label 'master' } // Utilise bien le label que tu as mis à l'agent
+
     agent any
 
     stages {
-        /*stage('POC : Préparation Platform') {
-            agent { label 'test-agent-ubound' }
-            steps {
-                echo "--- ÉTAPE 1 : Simulation Préparation ---"
-                sh 'mkdir -p ./poc-test'
-                sh 'date > ./poc-test/build_info.txt'
-                dir('/home/jules/autres') {
-                    sh 'date > autres_info.txt'
-                    // Toutes les commandes ici seront dans /home/jules/autres
-                }
-                sh 'hostname'
-                echo "Plateforme simulée avec succès."
-            }
-        }*/
 
         stage('Pre-Check Platform') {
-            agent { label 'built-in' }
+            //agent { label 'built-in' }
             steps {
                 sh 'hostname'
                 // Si ce test échoue (ex: statut KO), Jenkins s'arrête ici
@@ -27,14 +13,14 @@ pipeline {
             }
         }
         stage('Main Selenium Tests') {
-            agent { label 'built-in' }
+            //agent { label 'built-in' }
             steps {
                 sh 'hostname'
                 sh 'mvn test -P maintest'
             }
         }
         stage('Post-Check Tests') {
-            agent { label 'built-in' }
+            //agent { label 'built-in' }
             steps {
                 sh 'hostname'
                 sh 'mvn test -P postcheck'
