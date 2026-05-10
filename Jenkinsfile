@@ -6,6 +6,7 @@ pipeline {
         stage('POC : Préparation Platform') {
             agent { label 'test-agent-inbound' }
             steps {
+                cleanWs()
                 echo "--- ÉTAPE 1 : Simulation Préparation ---"
                 sh 'mkdir -p ./poc-test'
                 sh 'date > ./poc-test/build_info.txt'
@@ -18,10 +19,17 @@ pipeline {
             }
         }
 
+        stage('Checkout') {
+            agent { label 'built-in' }
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }        
+
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
             steps {
-                checkout scm  // 👈 récupère le code depuis GitHub
                 // Checkout automatique ici — le code est disponible directement
                 sh 'mvn clean test -P precheck'
             }
