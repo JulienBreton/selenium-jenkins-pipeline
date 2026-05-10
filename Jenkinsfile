@@ -2,6 +2,21 @@ pipeline {
    agent any
 
     stages {
+        stage('POC : Préparation Platform') {
+            agent { label 'test-agent-ubound' }
+            steps {
+                echo "--- ÉTAPE 1 : Simulation Préparation ---"
+                sh 'mkdir -p ./poc-test'
+                sh 'date > ./poc-test/build_info.txt'
+                dir('/home/jules/autres') {
+                    sh 'date > autres_info.txt'
+                    // Toutes les commandes ici seront dans /home/jules/autres
+                }
+                sh 'hostname'
+                echo "Plateforme simulée avec succès."
+            }
+        }
+
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
             steps {
