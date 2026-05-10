@@ -3,11 +3,9 @@ pipeline {
     agent any
 
     stages {
-
         stage('Pre-Check Platform') {
             //agent { label 'built-in' }
             steps {
-                sh 'hostname'
                 // Si ce test échoue (ex: statut KO), Jenkins s'arrête ici
                 sh 'mvn clean test -P precheck'
             }
@@ -15,14 +13,12 @@ pipeline {
         stage('Main Selenium Tests') {
             //agent { label 'built-in' }
             steps {
-                sh 'hostname'
                 sh 'mvn test -P maintest'
             }
         }
         stage('Post-Check Tests') {
             //agent { label 'built-in' }
             steps {
-                sh 'hostname'
                 sh 'mvn test -P postcheck'
             }
         }
