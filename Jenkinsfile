@@ -21,6 +21,7 @@ pipeline {
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
             steps {
+                checkout scm  // 👈 récupère le code depuis GitHub
                 // Checkout automatique ici — le code est disponible directement
                 sh 'mvn clean test -P precheck'
             }
