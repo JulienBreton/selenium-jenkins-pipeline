@@ -29,6 +29,9 @@ pipeline {
 
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-25-JDK'
+            }
             steps {
                 // Checkout automatique ici — le code est disponible directement
                 sh 'mvn clean test -P precheck'
@@ -37,6 +40,9 @@ pipeline {
 
         stage('Main Selenium Tests') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-25-JDK'
+            }
             steps {
                 sh 'mvn test -P maintest'
             }
@@ -44,6 +50,9 @@ pipeline {
 
         stage('Post-Check Tests') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-25-JDK'
+            }
             steps {
                 sh 'mvn test -P postcheck'
             }
