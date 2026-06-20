@@ -1,11 +1,6 @@
 pipeline {
     agent none
 
-    tools {
-        // Le nom ici doit être STRICTEMENT identique au "Nom" donné dans l'interface Jenkins
-        jdk 'Java-21-JDK'
-    }
-
     stages {
 
         stage('POC : Préparation Platform') {
@@ -34,6 +29,9 @@ pipeline {
 
         stage('Pre-Check Platform') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-21-JDK'
+            }
             steps {
                 // Checkout automatique ici — le code est disponible directement
                 sh 'mvn clean test -P precheck'
@@ -42,6 +40,9 @@ pipeline {
 
         stage('Main Selenium Tests') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-21-JDK'
+            }
             steps {
                 sh 'mvn test -P maintest'
             }
@@ -49,6 +50,9 @@ pipeline {
 
         stage('Post-Check Tests') {
             agent { label 'built-in' }
+            tools {
+                jdk 'Java-21-JDK'
+            }
             steps {
                 sh 'mvn test -P postcheck'
             }
