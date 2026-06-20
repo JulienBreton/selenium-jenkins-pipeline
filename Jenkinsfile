@@ -1,6 +1,11 @@
 pipeline {
     agent none
 
+    tools {
+        // Le nom ici doit être STRICTEMENT identique au "Nom" donné dans l'interface Jenkins
+        jdk 'Java-21-JDK'
+    }
+
     stages {
 
         stage('POC : Préparation Platform') {
